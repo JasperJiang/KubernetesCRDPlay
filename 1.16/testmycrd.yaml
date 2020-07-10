@@ -1,0 +1,6 @@
+apiVersion: "ip.pwc.com/v1"
+kind: MyCrd
+metadata:
+  name: mycrd-test
+spec:
+  element1: testelement

@@ -1,0 +1,9 @@
+apiVersion: "ip.pwc.com/v1"
+kind: tenant
+metadata:
+  name: tenant-a
+spec:
+  users: 
+  - user1@pwc.com
+  - user2@pwc.com
+
