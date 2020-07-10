@@ -26,7 +26,7 @@ kubeflow_edit = constants['kubeflow_edit']
 kubeflow_viewer = constants['kubeflow_viewer']
 system_tenant = constants['system_tenant']
 
-@kopf.on.create('ip.pwc.com', 'v1', 'tenants')
+@kopf.on.create('ip.demo.com', 'v1', 'tenants')
 def create_fn_1(body, name, meta, spec, retry=None, **kwargs):
     tenant = body
     namespace_name = tenant.metadata.name
@@ -78,7 +78,7 @@ def create_fn_1(body, name, meta, spec, retry=None, **kwargs):
         update_system_tenant_user_binding(namespace_name)
 
 def update_system_tenant_user_binding(namespace_name):
-    tenants = custom_obj_api.list_cluster_custom_object('ip.pwc.com', 'v1', 'tenants')
+    tenants = custom_obj_api.list_cluster_custom_object('ip.demo.com', 'v1', 'tenants')
     for tenant in tenants['items']:
         if tenant['metadata']['name'].lower() == system_tenant:
             binding_users(namespace_name, tenant['spec']['users'])
@@ -87,7 +87,7 @@ def update_system_tenant_user_binding(namespace_name):
     
 
 def binding_system_tenant_user(users):
-    tenants = custom_obj_api.list_cluster_custom_object('ip.pwc.com', 'v1', 'tenants')
+    tenants = custom_obj_api.list_cluster_custom_object('ip.demo.com', 'v1', 'tenants')
     for tenant in tenants['items']:
         if tenant['metadata']['name'].lower() == system_tenant:
             pass
@@ -96,7 +96,7 @@ def binding_system_tenant_user(users):
             binding_users(namespace_name, users)
 
 def unbinding_system_tenant_user(users):
-    tenants = custom_obj_api.list_cluster_custom_object('ip.pwc.com', 'v1', 'tenants')
+    tenants = custom_obj_api.list_cluster_custom_object('ip.demo.com', 'v1', 'tenants')
     for tenant in tenants['items']:
         if tenant['metadata']['name'].lower() == system_tenant:
             pass
@@ -252,7 +252,7 @@ def update_role_binding(namespace_name, role_binding_dic):
 def create_quota(namespace_name):
     pass
 
-@kopf.on.field('ip.pwc.com', 'v1', 'tenants', field='spec.users')
+@kopf.on.field('ip.demo.com', 'v1', 'tenants', field='spec.users')
 def update_lst(body, old, new, **kwargs):
     namespace_name = body.metadata.name
     tenant_name = body.metadata.name

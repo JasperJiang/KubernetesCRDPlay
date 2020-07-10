@@ -8,10 +8,10 @@ if __name__ == "__main__":
     # print(a.metadata.name)
     custom_obj_api = kubernetes.client.CustomObjectsApi()
 
-    tenants = custom_obj_api.list_cluster_custom_object('ip.pwc.com', 'v1', 'tenants')
+    tenants = custom_obj_api.list_cluster_custom_object('ip.demo.com', 'v1', 'tenants')
     print(tenants['items'])
-    # old = ['user1@pwc.com', 'user2@pwc.com']
-    # new = ['user1@pwc.com', 'user3@pwc.com']
+    # old = ['user1@demo.com', 'user2@demo.com']
+    # new = ['user1@demo.com', 'user3@demo.com']
 
     # print(f"new: {set(new) - set(old)}")
     

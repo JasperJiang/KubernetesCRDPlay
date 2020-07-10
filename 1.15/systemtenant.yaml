@@ -1,9 +1,9 @@
-apiVersion: "ip.pwc.com/v1"
+apiVersion: "ip.demo.com/v1"
 kind: Tenant
 metadata:
   name: systemtenant
 spec:
   users: 
-  - system@pwc.com
-  # - system2@pwc.com
+  - system@demo.com
+  # - system2@demo.com
 

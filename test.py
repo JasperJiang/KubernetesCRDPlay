@@ -20,7 +20,7 @@ if __name__ == "__main__":
     config.load_kube_config()    
     custome_object_api = client.CustomObjectsApi()
     mycrd_yaml = '''
-    apiVersion: "ip.pwc.com/v1"
+    apiVersion: "ip.demo.com/v1"
     kind: MyCrd
     metadata:
         name: mycrd-test
@@ -37,7 +37,7 @@ if __name__ == "__main__":
 
     # create the resource
     custome_object_api.create_cluster_custom_object(
-        group="ip.pwc.com",
+        group="ip.demo.com",
         version="v1",
         plural="mycrds",
         body=mycrd_dic,
